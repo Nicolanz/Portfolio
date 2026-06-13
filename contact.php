@@ -12,7 +12,7 @@ header('Content-Type: application/json; charset=utf-8');
 define('RECIPIENT_EMAIL', 'nicolasandreszarate@gmail.com');
 
 // Define your Google reCAPTCHA Secret Key (obtain from Google reCAPTCHA Admin Console)
-define('RECAPTCHA_SECRET_KEY', '6Lcs5LQeAAAAAKl7W3-V8YJ4JjWfN92kQ6WdF-Hh'); // Replace this placeholder if it doesn't match your actual secret key
+define('RECAPTCHA_SECRET_KEY', '6LcGZRwtAAAAAB22V7ZVl80FvVfcEwZ-dkNddrDu'); // Replace this placeholder if it doesn't match your actual secret key
 
 // Determine the language (based on Referer or request header, default to English)
 $referer = $_SERVER['HTTP_REFERER'] ?? '';
