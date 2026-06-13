@@ -1079,3 +1079,36 @@ h1, h2, h3, h4, h5, h6,
         margin: -10px 0 !important;
     }
 }
+
+/* GitHub Navbar Explore Code Pill */
+.nav-btn-github {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.02) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 210, 255, 0.25) !important;
+    color: var(--primary-cyan) !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    padding: 6px 14px !important;
+    border-radius: 30px !important;
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.05);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
+    text-decoration: none !important;
+}
+
+.nav-btn-github i {
+    font-size: 16px;
+    vertical-align: middle;
+}
+
+.nav-btn-github:hover {
+    background: rgba(0, 210, 255, 0.05) !important;
+    border-color: var(--primary-cyan) !important;
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.25) !important;
+    color: #ffffff !important;
+    transform: translateY(-1px);
+}
