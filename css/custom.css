@@ -1112,3 +1112,28 @@ h1, h2, h3, h4, h5, h6,
     color: #ffffff !important;
     transform: translateY(-1px);
 }
+
+/* Glassmorphic Language Switcher Button */
+.lang-switch-btn {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.02) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    color: var(--text-muted) !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    border-radius: 50% !important;
+    transition: all 0.3s ease !important;
+    text-decoration: none !important;
+}
+
+.lang-switch-btn:hover {
+    border-color: var(--primary-cyan) !important;
+    color: var(--primary-cyan) !important;
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.2) !important;
+    background: rgba(0, 210, 255, 0.04) !important;
+}
