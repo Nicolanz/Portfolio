@@ -1137,3 +1137,20 @@ h1, h2, h3, h4, h5, h6,
     box-shadow: 0 0 10px rgba(0, 210, 255, 0.2) !important;
     background: rgba(0, 210, 255, 0.04) !important;
 }
+
+/* Custom Cyber Loader Overrides */
+#ftco-loader {
+    background-color: var(--bg-dark) !important;
+}
+
+#ftco-loader.fullscreen {
+    background-color: var(--bg-dark) !important;
+}
+
+#ftco-loader .path-bg {
+    stroke: rgba(255, 255, 255, 0.05) !important;
+}
+
+#ftco-loader .path {
+    stroke: var(--primary-cyan) !important;
+}
