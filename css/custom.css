@@ -1164,3 +1164,70 @@ h1, h2, h3, h4, h5, h6,
         margin-bottom: 12px !important;
     }
 }
+
+/* Premium Cyber Toggler (Hamburger) */
+.navbar-toggler {
+    padding: 8px 10px !important;
+    border: 1px solid rgba(0, 210, 255, 0.3) !important;
+    background: rgba(7, 9, 19, 0.6) !important;
+    border-radius: 8px !important;
+    outline: none !important;
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.1) !important;
+    transition: all 0.3s ease !important;
+}
+
+.navbar-toggler:hover, .navbar-toggler:focus {
+    border-color: var(--primary-cyan) !important;
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.35) !important;
+}
+
+.cyber-hamburger {
+    width: 22px;
+    height: 16px;
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    vertical-align: middle;
+}
+
+.cyber-hamburger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-cyan);
+    border-radius: 2px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 0 8px var(--primary-cyan);
+}
+
+/* Middle bar slightly shorter for a stylish tech look */
+.cyber-hamburger span:nth-child(2) {
+    width: 75%;
+    align-self: flex-start;
+}
+
+/* Animation to 'X' when expanded (active) */
+.navbar-toggler[aria-expanded="true"] .cyber-hamburger span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.navbar-toggler[aria-expanded="true"] .cyber-hamburger span:nth-child(2) {
+    opacity: 0;
+    width: 0;
+}
+
+.navbar-toggler[aria-expanded="true"] .cyber-hamburger span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile dropdown scrolled state text color overrides */
+@media (max-width: 991.98px) {
+    .ftco-navbar-light.scrolled .navbar-nav .nav-link {
+        color: var(--text-muted) !important;
+    }
+    .ftco-navbar-light.scrolled .navbar-nav .nav-item.active .nav-link,
+    .ftco-navbar-light.scrolled .navbar-nav .nav-link:hover {
+        color: var(--primary-cyan) !important;
+    }
+}
