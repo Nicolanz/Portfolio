@@ -225,15 +225,11 @@ Passionate about self-learning, optimization, and shell scripting.`,
    Backend system to upload, resize, and manage file assets.
    URL: <a href="https://github.com/duvanjm/holbertonschool-files_manager" target="_blank" class="text-cyan">https://github.com/.../files_manager</a>
 
-2. <span class="text-green">Sama Healthy Bar</span> (Web Development)
-   Production e-commerce bar site built with custom flows.
-   URL: <a href="https://samahealthybar.com/" target="_blank" class="text-cyan">https://samahealthybar.com/</a>
-
-3. <span class="text-green">Pet Tracker</span> (Python / Flask / Web App)
+2. <span class="text-green">Pet Tracker</span> (Python / Flask / Web App)
    Full-stack app to register, search, and map pet profiles.
    URL: <a href="https://github.com/Nicolanz/pet_tracker" target="_blank" class="text-cyan">https://github.com/Nicolanz/pet_tracker</a>
 
-4. <span class="text-green">AirBnB Clone Console</span> (Python / OOP)
+3. <span class="text-green">AirBnB Clone Console</span> (Python / OOP)
    A command line console to manage hotel system records.
    URL: <a href="https://github.com/Nicolanz/AirBnB_clone" target="_blank" class="text-cyan">https://github.com/Nicolanz/AirBnB_clone</a>`,
             
@@ -285,15 +281,11 @@ Apasionado por la optimización, el autoaprendizaje y scripting Unix.`,
    Sistema backend para subir, redimensionar y gestionar archivos.
    URL: <a href="https://github.com/duvanjm/holbertonschool-files_manager" target="_blank" class="text-cyan">https://github.com/.../files_manager</a>
 
-2. <span class="text-green">Sama Healthy Bar</span> (Desarrollo Web)
-   E-commerce funcional en producción con flujos de pago.
-   URL: <a href="https://samahealthybar.com/" target="_blank" class="text-cyan">https://samahealthybar.com/</a>
-
-3. <span class="text-green">Pet Tracker</span> (Python / Flask / Web App)
+2. <span class="text-green">Pet Tracker</span> (Python / Flask / Web App)
    Aplicación full-stack para registrar, buscar y mapear mascotas.
    URL: <a href="https://github.com/Nicolanz/pet_tracker" target="_blank" class="text-cyan">https://github.com/Nicolanz/pet_tracker</a>
 
-4. <span class="text-green">Consola AirBnB</span> (Python / OOP)
+3. <span class="text-green">Consola AirBnB</span> (Python / OOP)
    Consola de comandos para administrar registros del hotel.
    URL: <a href="https://github.com/Nicolanz/AirBnB_clone" target="_blank" class="text-cyan">https://github.com/Nicolanz/AirBnB_clone</a>`,
             
