@@ -949,35 +949,40 @@
 				<div class="col-md-8">
 					<div id="messageDiv" >
 					</div>
-					<form action="#" id="form" class="bg-light p-4 p-md-5 contact-form">
+					<form action="#" id="form" class="contact-form p-4 p-md-5">
+						<h3 class="mb-4 text-center" style="font-weight: 600; background: var(--gradient-cyan-blue); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Enviar un Mensaje</h3>
 						<div class="row">
 							<div class="col-md-6">
-								<div class="form-group">
-									<input type="text" class="form-control" name="name" id="name" placeholder="Nombre" required>
+								<div class="form-group-custom">
+									<span class="form-icon-custom"><i class="fa fa-user"></i></span>
+									<input type="text" class="form-control-custom" name="name" id="name" placeholder="Nombre" required>
 								</div>
 							</div>
 							<div class="col-md-6">
-								<div class="form-group">
-									<input type="email" class="form-control" name="email" id="email" placeholder="Correo Electronico"required>
+								<div class="form-group-custom">
+									<span class="form-icon-custom"><i class="fa fa-envelope"></i></span>
+									<input type="email" class="form-control-custom" name="email" id="email" placeholder="Correo Electrónico" required>
 								</div>
 							</div>
 							<div class="col-md-12">
-								<div class="form-group">
-									<input type="text" class="form-control" name="subject" id="subject" placeholder="Asunto" required>
+								<div class="form-group-custom">
+									<span class="form-icon-custom"><i class="fa fa-tag"></i></span>
+									<input type="text" class="form-control-custom" name="subject" id="subject" placeholder="Asunto" required>
 								</div>
 							</div>
 							<div class="col-md-12">
-								<div class="form-group">
-									<textarea cols="30" rows="7" class="form-control" name="message" id="message" placeholder="Mensaje" required></textarea>
+								<div class="form-group-custom textarea-group">
+									<span class="form-icon-custom"><i class="fa fa-commenting"></i></span>
+									<textarea cols="30" rows="7" class="form-control-custom" name="message" id="message" placeholder="Mensaje" required></textarea>
 								</div>
 							</div>
-							<div class="col-md-12">
-								<div class="form-group">
-									<div class="g-recaptcha mt-2" data-sitekey="6Lcs5LQeAAAAAMnXW-q3AMg25YjGg9bdwtfogGK4"></div>
-									<div id="status"></div>
-									<br/>
-									<input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+							<div class="col-md-12 text-center">
+								<div class="g-recaptcha-wrapper d-inline-block mb-3">
+									<div class="g-recaptcha" data-theme="dark" data-sitekey="6Lcs5LQeAAAAAMnXW-q3AMg25YjGg9bdwtfogGK4" data-callback="enableSubmitBtn" data-expired-callback="disableSubmitBtn"></div>
 								</div>
+								<div id="status" class="mt-2 text-left"></div>
+								<br/>
+								<button type="submit" id="submit-btn" class="btn btn-submit py-3 px-5" disabled>Enviar Mensaje</button>
 							</div>
 						</div>
 					</form>

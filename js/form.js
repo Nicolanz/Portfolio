@@ -1,90 +1,169 @@
+/* 
+   Nicolas Zarate Portfolio - Contact Form Handler
+   Manages form submission, loading state, reCAPTCHA validation, and EmailJS delivery.
+*/
 
-// waits to storage object
-if (typeof(Storage) !== 'undefined') {
+// reCAPTCHA callback: enables submit button when verified
+window.enableSubmitBtn = function() {
+    const btn = document.getElementById('submit-btn');
+    if (btn) {
+        btn.removeAttribute('disabled');
+        // Clear any previous error status
+        const statusDiv = document.getElementById('status');
+        if (statusDiv) statusDiv.innerHTML = '';
+    }
+};
 
-    const user = getUser();
+// reCAPTCHA callback: disables submit button when expired
+window.disableSubmitBtn = function() {
+    const btn = document.getElementById('submit-btn');
+    if (btn) {
+        btn.setAttribute('disabled', 'true');
+    }
+};
 
-    if (Object.keys(user).length > 0){
-        displayMessage(user);
-    } else {
-        /**
-         * save user from the form data and save into local storage
-         */
+$(function() {
+    const isSpanish = window.location.pathname.includes('translate.html');
+    const contactForm = document.getElementById('form');
+    const statusDiv = document.getElementById('status');
+    const submitBtn = document.getElementById('submit-btn');
 
-        // hide confirmation message and show form
-        $("#form").css("display", "block");
-        $("#messageDiv").css("display", "none");
+    if (!contactForm) return;
 
-        $("#form").submit(function(event){
-            event.preventDefault();
+    // Reset button disabled state initially on page load
+    if (submitBtn) {
+        submitBtn.setAttribute('disabled', 'true');
+    }
 
-            const form = new FormData(this);
-            const name = form.get('name');
-            const email = form.get('email');
-            const subject = form.get('subject');
-            const message = form.get('message');
+    contactForm.addEventListener('submit', function(event) {
+        event.preventDefault();
 
-            user.name = name;
-            user.email = email;
-            user.subject = subject;
-            user.message = message;
+        // 1. Double check reCAPTCHA verification and load state
+        if (typeof grecaptcha === 'undefined') {
+            const errorMsg = isSpanish 
+                ? 'El validador reCAPTCHA de Google no se cargó correctamente. Por favor, recarga la página o inténtalo de nuevo.' 
+                : 'Google reCAPTCHA failed to load. Please reload the page or try again.';
+            
+            showStatusAlert('danger', errorMsg);
+            return;
+        }
 
-            const res = grecaptcha.getResponse();
+        const recaptchaResponse = grecaptcha.getResponse();
+        if (recaptchaResponse.length === 0) {
+            const errorMsg = isSpanish 
+                ? 'Por favor, resuelve el reCAPTCHA antes de enviar el mensaje.' 
+                : 'Please solve the reCAPTCHA before sending your message.';
+            
+            showStatusAlert('danger', errorMsg);
+            return;
+        }
 
-            if (res.length != 0){
-                $("#status").css("display", "none")
-                sessionStorage.setItem('user', JSON.stringify(user));
-                emailjs.send('service_9n4249o', "template_r5xicbi", user).then(function(res){
-                    console.log("Success", res.status);
-                });
-                displayMessage(user);
-            }
-            else {
-                const location = document.location.href;
-                const str = location.slice(-14);
-                let msg;
+        // 2. Extract values and disable form to prevent double submission
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const subject = document.getElementById('subject').value.trim();
+        const message = document.getElementById('message').value.trim();
 
-                if (str !== "translate.html"){
-                    msg = "Accept captcha verification"
-                } else {
-                    msg = "Acepta el captcha primero";
+        setFormLoadingState(true);
+
+        // 3. Prepare parameters for EmailJS (robust parameter names)
+        const templateParams = {
+            name: name,
+            from_name: name,
+            email: email,
+            from_email: email,
+            reply_to: email,
+            subject: subject,
+            message: message,
+            'g-recaptcha-response': recaptchaResponse
+        };
+
+        // 4. Send Email via EmailJS
+        emailjs.send('service_9n4249o', 'template_r5xicbi', templateParams)
+            .then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
+                
+                // Show beautiful success alert
+                const successMsg = isSpanish 
+                    ? `¡Gracias ${name}! Tu mensaje ha sido enviado con éxito. Me pondré en contacto contigo pronto.`
+                    : `Thanks ${name}! Your message has been sent successfully. I'll get back to you shortly.`;
+                
+                showStatusAlert('success', successMsg);
+                
+                // Reset form, recaptcha, and disable button again
+                contactForm.reset();
+                if (typeof grecaptcha !== 'undefined') {
+                    grecaptcha.reset();
                 }
-                $("#status").append(msg);
-            }
+                setFormLoadingState(false);
+                if (submitBtn) submitBtn.setAttribute('disabled', 'true');
+            })
+            .catch(function(error) {
+                console.error('FAILED...', error);
+                
+                // Show error message
+                const errorMsg = isSpanish 
+                    ? 'Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo o escríbeme directamente a mi correo.'
+                    : 'Failed to send the message. Please try again or email me directly at my address.';
+                
+                showStatusAlert('danger', errorMsg);
+                setFormLoadingState(false);
+            });
+    });
 
+    // Helper: shows loading spinner on button and disables fields
+    function setFormLoadingState(isLoading) {
+        if (!submitBtn) return;
+
+        if (isLoading) {
+            submitBtn.setAttribute('disabled', 'true');
+            const loadingText = isSpanish 
+                ? '<i class="fa fa-spinner fa-spin mr-2"></i> Enviando...' 
+                : '<i class="fa fa-spinner fa-spin mr-2"></i> Sending...';
+            submitBtn.innerHTML = loadingText;
+            
+            // Disable inputs
+            toggleInputs(true);
+        } else {
+            submitBtn.removeAttribute('disabled');
+            const defaultText = isSpanish ? 'Enviar Mensaje' : 'Send Message';
+            submitBtn.innerHTML = defaultText;
+            
+            // Enable inputs
+            toggleInputs(false);
+        }
+    }
+
+    // Helper: toggles disable state on input elements
+    function toggleInputs(disabled) {
+        const inputs = contactForm.querySelectorAll('input:not([type="submit"]):not([type="button"]), textarea');
+        inputs.forEach(input => {
+            if (disabled) {
+                input.setAttribute('disabled', 'true');
+            } else {
+                input.removeAttribute('disabled');
+            }
         });
     }
-} else {
-    alert("Sorry, your browser does not support Web storage. Try again with a better one");
-}
 
-// function to get user from session storage
-function getUser () {
-    let user = {}
-    if (sessionStorage.length == 0) {
-        sessionStorage.setItem('user', JSON.stringify(user))
-        return (user);
+    // Helper: renders a clean Bootstrap alert using custom glassmorphic styling
+    function showStatusAlert(type, message) {
+        if (!statusDiv) return;
+
+        const iconClass = type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle';
+        const titleText = type === 'success' 
+            ? (isSpanish ? '¡Éxito!' : 'Success!') 
+            : (isSpanish ? '¡Error!' : 'Error!');
+        const alertClass = type === 'success' ? 'alert-custom-success' : 'alert-custom-danger';
+
+        statusDiv.innerHTML = `
+            <div class="alert ${alertClass} alert-dismissible fade show shadow-sm" role="alert">
+                <i class="fa ${iconClass} mr-2"></i>
+                <strong>${titleText}</strong> ${message}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="color: inherit; opacity: 0.8; background: none; border: none; font-size: 20px; line-height: 1; float: right;">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        `;
     }
-    else {
-        user = JSON.parse(sessionStorage.getItem('user'));
-        return (user);
-    }
-}
-
-// function to show message after sending email and hide form
-function displayMessage(user){
-    const location = document.location.href;
-    const str = location.slice(-14);
-
-    if (str !== "translate.html"){
-        $("#messageDiv").append(`Thanks ${user.name}, I'll contact you`);
-    } else {
-        $("#messageDiv").append(`Gracias ${user.name}. Me pondre en contacto contigo`);
-    }
-
-    $("#messageDiv").css("display", "block");
-    $("#form").css("display", "none");
-    $("#fill").css("display", "none");
-}
-
-
+});
