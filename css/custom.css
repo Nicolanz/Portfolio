@@ -1,0 +1,948 @@
+/* 
+   Nicolas Zarate Portfolio - Premium Dark Theme & Cyber Glassmorphism Overrides
+   Designed & built with modern UX/UI design guidelines (Glassmorphism, Neon glows, Deep colors, Canvas animations)
+*/
+
+:root {
+    --bg-dark: #070913;
+    --bg-card: rgba(255, 255, 255, 0.02);
+    --bg-card-hover: rgba(255, 255, 255, 0.05);
+    --border-color: rgba(255, 255, 255, 0.07);
+    --border-glow: rgba(0, 210, 255, 0.25);
+    --primary-cyan: #00d2ff;
+    --primary-purple: #9d4edd;
+    --primary-blue: #3b82f6;
+    --text-main: #f3f4f6;
+    --text-muted: #9ca3af;
+    --gradient-cyan-blue: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+    --gradient-purple-pink: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+    --gradient-neon: linear-gradient(90deg, #00f2fe, #a855f7, #00f2fe);
+    --glow-shadow: 0 0 20px rgba(0, 210, 255, 0.2);
+}
+
+/* Global resets for Dark Mode */
+body {
+    background-color: var(--bg-dark) !important;
+    color: var(--text-main) !important;
+}
+
+.bg-light, 
+.ftco-about, 
+.ftco-section, 
+.ftco-project, 
+.ftco-counter, 
+.ftco-hireme, 
+.contact-section {
+    background: var(--bg-dark) !important;
+    color: var(--text-main) !important;
+}
+
+/* Override Poppins headings and default elements */
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    color: #ffffff !important;
+}
+
+.heading-section h2 {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.5px;
+}
+
+.heading-section .subheading {
+    color: var(--primary-cyan) !important;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+/* Custom interactive UI buttons */
+.btn-glow {
+    background: var(--gradient-cyan-blue);
+    color: #070913 !important;
+    font-weight: 600;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 30px;
+    box-shadow: var(--glow-shadow);
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-glow:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 25px rgba(0, 210, 255, 0.5);
+    color: #070913 !important;
+}
+
+.btn-outline-glass {
+    background: transparent;
+    color: #fff !important;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 30px;
+    padding: 12px 30px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-outline-glass:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--primary-cyan);
+    color: var(--primary-cyan) !important;
+}
+
+/* Nav Bar Glassmorphism overrides */
+.ftco_navbar {
+    background: rgba(7, 9, 19, 0.75) !important;
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important;
+    border-bottom: 1px solid var(--border-color) !important;
+    transition: all 0.3s ease;
+}
+
+.ftco_navbar.scrolled {
+    background: rgba(7, 9, 19, 0.92) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.ftco_navbar .navbar-brand {
+    color: #fff !important;
+    font-weight: 700;
+}
+
+.ftco_navbar .navbar-brand span {
+    color: var(--primary-cyan) !important;
+}
+
+.ftco_navbar .nav-link {
+    color: var(--text-muted) !important;
+    font-size: 15px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.ftco_navbar .nav-link:hover,
+.ftco_navbar .nav-item.active .nav-link {
+    color: var(--primary-cyan) !important;
+}
+
+.navbar-toggler {
+    color: var(--primary-cyan) !important;
+    border-color: rgba(0, 210, 255, 0.2) !important;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+#particles-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: auto;
+}
+
+/* Ability Counter Section */
+#section-counter {
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: 60px 0 !important;
+    position: relative;
+    z-index: 2;
+}
+
+#section-counter .block-18 {
+    background: rgba(255, 255, 255, 0.02) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 30px 20px !important;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+}
+
+#section-counter .block-18:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-cyan);
+    box-shadow: 0 10px 25px rgba(0, 210, 255, 0.1);
+}
+
+#section-counter .icon {
+    color: var(--primary-cyan) !important;
+    font-size: 40px;
+    margin-right: 15px;
+}
+
+#section-counter .text strong {
+    color: #fff !important;
+    font-size: 32px;
+}
+
+#section-counter .text span {
+    color: var(--text-muted) !important;
+    font-size: 14px;
+}
+
+/* About me Info */
+.about-info li span {
+    color: #fff !important;
+}
+.about-info li span:first-child {
+    font-weight: 600;
+    width: 130px;
+    color: var(--primary-cyan) !important;
+}
+
+.my-interest .interest-wrap {
+    background: rgba(255, 255, 255, 0.02) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 12px 18px !important;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+.my-interest .interest-wrap:hover {
+    border-color: var(--primary-cyan);
+    background: rgba(0, 210, 255, 0.05) !important;
+    transform: translateY(-3px);
+}
+
+.my-interest .icon span {
+    color: var(--primary-cyan) !important;
+}
+
+.my-interest .text {
+    color: #fff !important;
+    font-weight: 500;
+}
+
+.img-about .img {
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+/* Skills Section Overrides */
+#skills-section .bg-white {
+    background: rgba(255, 255, 255, 0.02) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2) !important;
+    border-radius: 16px !important;
+    transition: all 0.3s ease;
+}
+
+#skills-section .bg-white:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-cyan) !important;
+    box-shadow: 0 15px 35px rgba(0, 210, 255, 0.12) !important;
+}
+
+#skills-section h2.h5 {
+    color: #fff !important;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+#skills-section .small.text-gray {
+    color: var(--text-muted) !important;
+}
+
+#skills-section .h4 {
+    color: #fff !important;
+}
+
+#skills-section .progress {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+#skills-section .border-primary {
+    border-color: var(--primary-cyan) !important;
+}
+
+#skills-section .progress-value {
+    background: transparent !important;
+    color: #fff !important;
+}
+
+/* Services Section Overrides */
+.services.bg-white {
+    background: rgba(255, 255, 255, 0.02) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-radius: 16px !important;
+    padding: 35px 25px !important;
+    transition: all 0.3s ease;
+}
+
+.services.bg-white:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary-cyan) !important;
+    box-shadow: 0 15px 35px rgba(0, 210, 255, 0.15) !important;
+}
+
+.services h3.heading {
+    color: #fff !important;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.services p {
+    color: var(--text-muted) !important;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.services .icon {
+    background: rgba(0, 210, 255, 0.08) !important;
+    color: var(--primary-cyan) !important;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 25px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.05);
+}
+
+.services:hover .icon {
+    background: var(--primary-cyan) !important;
+    color: #070913 !important;
+    box-shadow: 0 0 20px var(--primary-cyan);
+}
+
+/* Project cards dynamic visual glow */
+.project {
+    border-radius: 16px !important;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+}
+
+.project .overlay {
+    background: linear-gradient(to top, rgba(7, 9, 19, 0.95) 0%, rgba(7, 9, 19, 0.5) 60%, rgba(7, 9, 19, 0.2) 100%) !important;
+    opacity: 0.85;
+    transition: all 0.3s ease;
+}
+
+.project:hover .overlay {
+    opacity: 0.95;
+    background: linear-gradient(to top, rgba(7, 9, 19, 0.98) 0%, rgba(0, 210, 255, 0.2) 100%) !important;
+}
+
+.project .text {
+    z-index: 2;
+    transform: translateY(15px);
+    transition: all 0.4s ease;
+    padding: 30px !important;
+}
+
+.project:hover .text {
+    transform: translateY(0);
+}
+
+.project .text h3 a {
+    color: #fff !important;
+    font-weight: 700;
+    font-size: 20px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.project .text h3 a:hover {
+    color: var(--primary-cyan) !important;
+}
+
+.project .text span {
+    color: var(--primary-cyan) !important;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 2px;
+    font-weight: 600;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.project:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 210, 255, 0.15) !important;
+    border-color: var(--primary-cyan) !important;
+}
+
+/* Hire Me / Banner Section */
+.ftco-hireme {
+    background: radial-gradient(circle at 10% 20%, rgba(0, 210, 255, 0.08) 0%, transparent 50%), var(--bg-dark) !important;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: 70px 0 !important;
+}
+
+.ftco-hireme h2 {
+    color: #fff !important;
+    font-weight: 700;
+    font-size: 30px;
+}
+
+.ftco-hireme p {
+    color: var(--text-muted) !important;
+    font-size: 16px;
+}
+
+.ftco-hireme .btn-white {
+    background: var(--gradient-cyan-blue) !important;
+    border: none !important;
+    color: #070913 !important;
+    font-weight: 600 !important;
+    border-radius: 30px;
+    box-shadow: var(--glow-shadow);
+    transition: all 0.3s ease;
+}
+
+.ftco-hireme .btn-white:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 35px rgba(0, 210, 255, 0.4);
+}
+
+/* Blog Cards */
+.blog-entry {
+    background: rgba(255, 255, 255, 0.01) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    overflow: hidden;
+    padding: 15px;
+    transition: all 0.3s ease;
+}
+
+.blog-entry:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-purple);
+    box-shadow: 0 15px 30px rgba(157, 78, 221, 0.12);
+}
+
+.blog-entry .block-20 {
+    border-radius: 12px;
+    overflow: hidden;
+    height: 220px;
+    transition: transform 0.4s ease;
+}
+
+.blog-entry:hover .block-20 {
+    transform: scale(1.02);
+}
+
+.blog-entry .text h3.heading a {
+    color: #fff !important;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.4;
+    transition: color 0.3s ease;
+}
+
+.blog-entry .text h3.heading a:hover {
+    color: var(--primary-purple) !important;
+}
+
+.blog-entry .meta p, .blog-entry .meta a {
+    color: var(--text-muted) !important;
+    font-size: 13px;
+}
+
+.blog-entry p {
+    color: var(--text-muted) !important;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Contact Form & Side details */
+.contact-section {
+    padding-bottom: 100px !important;
+}
+
+.contact-form {
+    background: rgba(255, 255, 255, 0.02) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.contact-form .form-control {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+    color: #fff !important;
+    border-radius: 8px;
+    padding: 12px 18px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+.contact-form .form-control:focus {
+    border-color: var(--primary-cyan) !important;
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.15) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.contact-form input[type="submit"] {
+    background: var(--gradient-cyan-blue) !important;
+    border: none !important;
+    color: #070913 !important;
+    font-weight: 600 !important;
+    border-radius: 30px;
+    box-shadow: var(--glow-shadow);
+    transition: all 0.3s ease;
+}
+
+.contact-form input[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(0, 210, 255, 0.35);
+}
+
+.dbox {
+    background: rgba(255, 255, 255, 0.01) !important;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 12px;
+    padding: 22px !important;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(8px);
+}
+
+.dbox:hover {
+    border-color: var(--primary-cyan);
+    box-shadow: 0 10px 20px rgba(0, 210, 255, 0.08);
+}
+
+.dbox .icon {
+    background: rgba(0, 210, 255, 0.08) !important;
+    color: var(--primary-cyan) !important;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.dbox .text p {
+    color: var(--text-muted) !important;
+    margin-bottom: 0;
+    font-size: 14px;
+}
+
+.dbox .text p span {
+    color: #fff !important;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.dbox .text a {
+    color: var(--primary-cyan) !important;
+    transition: color 0.3s ease;
+}
+
+.dbox .text a:hover {
+    color: #fff !important;
+}
+
+/* Footer overrides */
+.ftco-footer {
+    background: #04050a !important;
+    border-top: 1px solid var(--border-color);
+    padding: 80px 0 !important;
+}
+
+.ftco-footer-widget h2 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    color: #fff !important;
+}
+
+.ftco-footer-widget p {
+    color: var(--text-muted) !important;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.ftco-footer-widget ul.list-unstyled li a {
+    color: var(--text-muted) !important;
+    font-size: 14px;
+    transition: color 0.3s ease;
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+.ftco-footer-widget ul.list-unstyled li a:hover {
+    color: var(--primary-cyan) !important;
+}
+
+.ftco-footer-social li a {
+    background: rgba(255,255,255,0.03) !important;
+    border: 1px solid rgba(255,255,255,0.05);
+    color: #fff !important;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.ftco-footer-social li a:hover {
+    background: var(--primary-cyan) !important;
+    color: #070913 !important;
+    box-shadow: 0 0 15px var(--primary-cyan);
+    transform: translateY(-3px);
+}
+
+/* Terminal Styles */
+.terminal-window {
+    background: rgba(10, 12, 22, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 210, 255, 0.05);
+    overflow: hidden;
+    height: 380px;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.terminal-header {
+    background: rgba(20, 22, 35, 0.95);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.terminal-dots {
+    display: flex;
+    gap: 6px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dot-red { background-color: #ef4444; }
+.dot-yellow { background-color: #eab308; }
+.dot-green { background-color: #22c55e; }
+
+.terminal-body {
+    flex-grow: 1;
+    overflow-y: auto;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #e5e7eb;
+    position: relative;
+}
+
+.terminal-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.terminal-body::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+.terminal-line {
+    margin-bottom: 8px;
+    word-break: break-all;
+}
+
+.prompt {
+    color: var(--primary-cyan);
+    font-weight: 600;
+}
+
+.cmd-run {
+    color: #fff;
+    font-weight: 500;
+}
+
+.text-cyan {
+    color: var(--primary-cyan);
+}
+
+.text-purple {
+    color: #c084fc;
+}
+
+.text-green {
+    color: #4ade80;
+}
+
+.output {
+    color: #d1d5db;
+    white-space: pre-wrap;
+    margin-bottom: 12px;
+}
+
+.terminal-input-line {
+    background: rgba(15, 17, 28, 0.95);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+#terminal-input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 13px;
+    flex-grow: 1;
+}
+
+.terminal-shortcuts {
+    background: rgba(10, 11, 20, 0.95);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.btn-term-shortcut {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--text-muted);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-term-shortcut:hover {
+    background: rgba(0, 210, 255, 0.1);
+    border-color: var(--primary-cyan);
+    color: var(--primary-cyan);
+}
+
+/* Matrix Effect in Terminal */
+#matrix-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background: #000;
+}
+
+.matrix-overlay-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 11;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: sans-serif;
+}
+
+.matrix-overlay-close:hover {
+    background: rgba(239, 68, 68, 0.3);
+    border-color: #ef4444;
+}
+
+/* Typing Caret Animation */
+#typing-text {
+    font-weight: 700;
+}
+
+/* Layout spacing updates */
+.gap-3 {
+    gap: 1rem;
+}
+
+/* 404 Page Custom Styles */
+.error-page-wrapper {
+    min-height: 100vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative !important;
+    background: #070913 !important;
+    padding: 80px 20px !important;
+}
+
+.error-code-glow {
+    font-size: clamp(5rem, 15vw, 9rem);
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 15px;
+    background: linear-gradient(135deg, var(--primary-cyan) 0%, var(--primary-purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 30px rgba(0, 210, 255, 0.2));
+    animation: pulseGlow 3s infinite alternate;
+}
+
+@keyframes pulseGlow {
+    0% {
+        filter: drop-shadow(0 0 20px rgba(0, 210, 255, 0.2));
+    }
+    100% {
+        filter: drop-shadow(0 0 40px rgba(157, 78, 221, 0.4));
+    }
+}
+
+.error-card {
+    background: rgba(255, 255, 255, 0.02) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 20px;
+    padding: 40px 30px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Snake Game inside 404 Terminal */
+.game-terminal {
+    background: rgba(10, 11, 20, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 25px 0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.game-terminal-header {
+    background: rgba(20, 22, 35, 0.95);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.game-canvas-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+}
+
+#game-canvas {
+    background: #04050a;
+    border: 1px solid rgba(0, 210, 255, 0.2);
+    border-radius: 8px;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8), 0 0 15px rgba(0, 210, 255, 0.05);
+    display: block;
+    max-width: 100%;
+}
+
+.game-overlay {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    background: rgba(4, 5, 10, 0.9);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    padding: 20px;
+    text-align: center;
+}
+
+.game-score-board {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 10px;
+    font-family: monospace;
+    font-size: 14px;
+}
+
+.game-instructions {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-family: monospace;
+    margin-top: 10px;
+}
+
+/* Mobile Controls */
+.game-controls-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-top: 15px;
+    width: 100%;
+    max-width: 200px;
+}
+
+.controls-row {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-direction {
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #fff;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.2s ease;
+}
+
+.btn-direction:active, .btn-direction:hover {
+    background: rgba(0, 210, 255, 0.15);
+    border-color: var(--primary-cyan);
+    color: var(--primary-cyan);
+    transform: scale(0.95);
+}
+
+.btn-play-again {
+    background: var(--gradient-cyan-blue);
+    color: #070913 !important;
+    font-weight: 600;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 20px;
+    cursor: pointer;
+    font-family: monospace;
+    margin-top: 15px;
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+}
+
+.btn-play-again:hover {
+    box-shadow: 0 0 25px rgba(0, 210, 255, 0.6);
+}

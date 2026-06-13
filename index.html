@@ -38,6 +38,7 @@
 	
 	<link rel="stylesheet" href="css/flaticon.css">
 	<link rel="stylesheet" type="text/css" href="./css/style.css?v=1.1">
+	<link rel="stylesheet" type="text/css" href="./css/custom.css">
 
 	<script src="../resources/assets/bootstrap/js/bootstrap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
@@ -79,86 +80,59 @@
 	</nav>
 
 	<!-- home & welcome section -->
-	<section id="home-section" class="hero">
-		<div class="home-slider owl-carousel d-none d-md-block" id="carrusel">
-			<div class="slider-item">
-				<div class="overlay"></div>
-				<div class="px-md-0">
-					<div class="row d-md-flex no-gutters slider-text align-items-end justify-content-end" data-scrollax-parent="true">
-						<div class="one-third order-md-last img" style="background: url(images/my-images/background.jpg); background-size: cover; opacity:0.5;">
-							<div class="overlay"></div>
-							<div class="overlay-1"></div>
-						</div>
-						<div class="one-forth d-flex  align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-							<div class="text">
-								<span class="subheading" style="color: #235789;">Hello! This is Nicolas</span>
-								<h1 class="mb-4 mt-3" style="color: #000;" >Innovative <span style="color: #235789;">UI/UX</span> Web Developer</h1>
-								<p id="ftco-nav""><a href="#contact-section" class="btn btn-primary" style="border: 1px solid #235789 !important; background-color: #235789;" >Hire me</a> <a href="./nicolaszarate-cv-med.pdf" download="nicolaszarate-cv.pdf" download id="download" class=" btn btn-primary btn-outline-primary">Download CV</a></p>
-							</div>
+	<section id="home-section" class="hero d-flex align-items-center justify-content-center position-relative py-5" style="min-height: 100vh; overflow: hidden; background: #070913;">
+		<canvas id="particles-canvas" class="position-absolute w-100 h-100" style="top: 0; left: 0; z-index: 1; pointer-events: auto;"></canvas>
+		<div class="container position-relative" style="z-index: 2; margin-top: 80px;">
+			<div class="row align-items-center">
+				<div class="col-lg-6 pr-lg-5 text-left mb-5 mb-lg-0">
+					<div class="hero-intro">
+						<span class="subheading d-inline-block px-3 py-1 rounded-pill mb-3" style="background: rgba(0, 210, 255, 0.08); border: 1px solid rgba(0, 210, 255, 0.15); color: #00d2ff !important; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px;">Hello World!</span>
+						<h1 class="font-weight-bold text-white mb-2" style="font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.2;">Nicolas Zarate</h1>
+						<h2 class="h4 mb-4 text-muted" style="font-weight: 500;">
+							<span class="text-white font-weight-bold">I am a </span><span id="typing-text" style="color: var(--primary-cyan); border-right: 2px solid var(--primary-cyan);"></span>
+						</h2>
+						<p class="lead text-muted mb-4" style="font-size: 17px; max-width: 500px; line-height: 1.6; color: #9ca3af !important;">
+							Focused on creating high-performance, functional systems and elegant UI/UX solutions. Let's build something exceptional.
+						</p>
+						<div class="hero-actions d-flex flex-wrap gap-3">
+							<a href="#contact-section" class="btn btn-glow mr-3 mb-2">Hire Me</a>
+							<a href="./nicolaszarate-cv-med.pdf" download="nicolaszarate-cv.pdf" class="btn btn-outline-glass mb-2">Download CV</a>
 						</div>
 					</div>
 				</div>
-			</div>
-
-			<div class="slider-item">
-				<div class="overlay"></div>
-				<div class="px-md-0">
-					<div class="row d-flex no-gutters slider-text align-items-end justify-content-end" data-scrollax-parent="true">
-						<div class="one-third order-md-last img" style="background: url(images/my-images/work.jpg); background-size: cover; opacity:0.5;">
-							<div class="overlay"></div>
-							<div class="overlay-1"></div>
-						</div>
-						<div class="one-forth d-flex align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-							<div class="text">
-								<span class="subheading" style="color: #235789;">I build &amp; design functional systems</span>
-								<h1 class="mb-4 mt-3" style="color: #000;">Hi, I am <span style="color: #235789;">Nicolas</span> Welcome to my Portfolio Site</h1>
-								<p id="ftco-nav" ><a href="#contact-section" class="btn btn-primary" style="border: 1px solid #235789 !important; background-color: #235789;">Hire me</a> <a href="./nicolaszarate-cv-med.pdf" download="nicolaszarate-cv.pdf" download id="download" class="btn btn-primary btn-outline-primary">Download CV</a></p>
+				<div class="col-lg-6">
+					<!-- Interactive Terminal Widget -->
+					<div class="terminal-window shadow-2xl">
+						<div class="terminal-header d-flex align-items-center justify-content-between px-3 py-2">
+							<div class="terminal-dots d-flex align-items-center">
+								<span class="dot dot-red"></span>
+								<span class="dot dot-yellow"></span>
+								<span class="dot dot-green"></span>
 							</div>
+							<div class="terminal-title text-muted text-xs font-mono" style="font-size: 11px;">bash - nicolas@zarate</div>
+							<div class="terminal-icon"><i class="fa fa-terminal text-muted text-xs" style="font-size: 11px;"></i></div>
+						</div>
+						<div class="terminal-body p-3 font-mono text-left" id="terminal-content">
+							<div class="text-cyan mb-1">Nicolas OS v2.0.0 (Type 'help' for available commands)</div>
+							<div class="text-muted mb-2">Last login: Fri Jun 12 2026 on ttys001</div>
+							<div class="terminal-line"><span class="prompt">nicolas@zarate:~$</span> <span class="cmd-run">welcome</span></div>
+							<div class="output mb-3">Hi! Welcome to my interactive portfolio. You can type commands in the input below, or tap the quick-command buttons to explore my profile.</div>
+						</div>
+						<div class="terminal-input-line d-flex align-items-center px-3 py-2">
+							<span class="prompt mr-2">nicolas@zarate:~$</span>
+							<input type="text" id="terminal-input" autocomplete="off" autofocus placeholder="type 'help'..."/>
+						</div>
+						<div class="terminal-shortcuts d-flex flex-wrap p-2 border-top-glass">
+							<button class="btn-term-shortcut" onclick="runTerminalCmd('help')">help</button>
+							<button class="btn-term-shortcut" onclick="runTerminalCmd('about')">about</button>
+							<button class="btn-term-shortcut" onclick="runTerminalCmd('skills')">skills</button>
+							<button class="btn-term-shortcut" onclick="runTerminalCmd('projects')">projects</button>
+							<button class="btn-term-shortcut" onclick="runTerminalCmd('secret')">secret</button>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-
-		<div id="demo" class="carousel slide d-block d-md-none" data-ride="carousel" id="carrusel">
-			<ul class="carousel-indicators">
-				<li data-target="#demo" data-slide-to="0" class="active"></li>
-				<li data-target="#demo" data-slide-to="1"></li>
-			</ul>
-			<div class="carousel-inner">
-				<div class="carousel-item active position-relative">
-					<div class="position-absolute d-flex align-items-center justify-content-center ftco-animate col-12 " style="z-index: 2; height: 650px;">
-						<div class="text slider-text col-12 d-flex flex-column flex-wrap align-items-center ">
-							<span class="subheading text-center" style="color: #235789;">Hello! This is Nicolas </span>
-							<h1 class="mb-4 mt-3 one-heading font-weight-bold text-center" style="color: #000;" >Innovative <span style="color: #235789;">UI/UX</span> Web Developer</h1>
-							<p id="ftco-nav""><a href="#contact-section" class="btn btn-primary" style="border: 1px solid #235789 !important; background-color: #235789;" >Hire me</a> <a href="./nicolaszarate-cv-med.pdf" download="nicolaszarate-cv.pdf" download id="download" class=" btn btn-primary btn-outline-primary">Download CV</a></p>
-						</div>
-					</div>
-					<div class="img position-relative" style="background: url(images/my-images/background.jpg); background-size: cover; opacity:0.5; height: 650px;"></div>
-				</div>
-
-				<div class="carousel-item position-relative">
-					<div class="position-absolute d-flex align-items-center justify-content-center ftco-animate col-12 " style="z-index: 2; height: 650px;">
-						<div class="text slider-text col-12 d-flex flex-column flex-wrap align-items-center ">
-							<span class="subheading text-center" style="color: #235789;">I build &amp; design functional systems</span>
-							<h1 class="mb-4 mt-3 one-heading font-weight-bold text-center" style="color: #000;" >Hi, I am <span style="color: #235789;">Nicolas</span> Welcome to my Portfolio Site</h1>
-							<p id="ftco-nav">
-								<a href="#contact-section" class="btn btn-primary" style="border: 1px solid #235789 !important; background-color: #235789;" >Hire me</a>
-								<a href="./nicolaszarate-cv-med.pdf" download="nicolaszarate-cv.pdf" download id="download" class=" btn btn-primary btn-outline-primary">Download CV</a>
-							</p>
-						</div>
-					</div>
-					<div class="img position-relative" style="background: url(images/my-images/work.jpg); background-size: cover; opacity:0.5; height: 650px;"></div>
-				</div>
-			</div>
-			<a class="carousel-control-prev" style="z-index: 4" href="#demo" data-slide="prev">
-				<span class="carousel-control-prev-icon"></span>
-			</a>
-			<a class="carousel-control-next" style="z-index: 4" href="#demo" data-slide="next">
-				<span class="carousel-control-next-icon"></span>
-			</a>
-		</div>
-
 	</section>
 
 	<!-- ability counter section -->
@@ -1117,6 +1091,7 @@
 		<script src="js/scrollax.min.js"></script>
 
 		<script src="js/main.js" ></script>
+		<script src="js/custom.js"></script>
 		<script src="js/form.js"></script>
 		<script type="text/javascript">
 			$(window).bind("resize", function () {

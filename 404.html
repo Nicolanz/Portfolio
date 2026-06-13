@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>404 - Sector Not Found | Nicolas Zarate</title>
+	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="error-page-wrapper">
+	<canvas id="particles-canvas" class="position-absolute w-100 h-100" style="top: 0; left: 0; z-index: 1; pointer-events: auto;"></canvas>
+
+	<div class="container position-relative" style="z-index: 2;">
+		<div class="row justify-content-center text-center">
+			<div class="col-md-10">
+				<div class="error-card">
+					<div class="error-code-glow">404</div>
+					<h1 class="h4 mb-3 font-weight-bold text-white" style="letter-spacing: 2px;">LOST IN CYBERSPACE</h1>
+					<p class="text-muted mb-4" style="font-size: 14px;">
+						The page you are looking for has been moved, deleted, or never existed in this sector.
+					</p>
+
+					<!-- Game Terminal Widget -->
+					<div class="game-terminal text-left">
+						<div class="game-terminal-header d-flex align-items-center justify-content-between px-3 py-2">
+							<div class="terminal-dots d-flex align-items-center">
+								<span class="dot dot-red"></span>
+								<span class="dot dot-yellow"></span>
+								<span class="dot dot-green"></span>
+							</div>
+							<div class="terminal-title text-muted font-mono" style="font-size: 11px; font-family: monospace;">bash - system_recovery.exe</div>
+							<div><i class="fa fa-gamepad text-muted" style="font-size: 12px;"></i></div>
+						</div>
+						<div class="game-canvas-container">
+							<div class="game-score-board text-cyan mb-2" style="font-family: monospace;">
+								<span>NODE_RECONSTRUCT: <span id="current-score" class="text-white">0</span></span>
+								<span>TARGET: <span class="text-purple">10</span></span>
+							</div>
+							
+							<div style="position: relative; width: 300px; height: 300px;">
+								<canvas id="game-canvas" width="300" height="300"></canvas>
+								
+								<!-- Overlay for Start / Game Over / Win -->
+								<div id="game-overlay" class="game-overlay">
+									<h3 id="overlay-title" class="text-cyan font-weight-bold mb-2" style="font-size: 18px; font-family: monospace;">LINK BROKEN</h3>
+									<p id="overlay-desc" class="text-muted mb-3" style="font-size: 12px; font-family: monospace; max-width: 240px; line-height: 1.4;">
+										Steer the package node. Absorb 10 data packets to restore connection.
+									</p>
+									<button id="btn-start" class="btn-play-again">INITIALIZE RECOVERY</button>
+								</div>
+							</div>
+
+							<div class="game-instructions text-center mt-3">
+								<span class="d-none d-md-inline" style="font-family: monospace; font-size: 11px;">Use keyboard <span class="text-cyan">ARROW KEYS</span> or <span class="text-cyan">WASD</span> to steer.</span>
+								<span class="d-inline d-md-none" style="font-family: monospace; font-size: 11px;">Use the D-pad below to steer.</span>
+							</div>
+
+							<!-- Mobile Direction D-pad -->
+							<div class="game-controls-mobile d-flex d-md-none mx-auto">
+								<div class="controls-row">
+									<button class="btn-direction" id="ctrl-up"><i class="fa fa-chevron-up"></i></button>
+								</div>
+								<div class="controls-row">
+									<button class="btn-direction" id="ctrl-left"><i class="fa fa-chevron-left"></i></button>
+									<div style="width: 44px; height: 44px;"></div>
+									<button class="btn-direction" id="ctrl-right"><i class="fa fa-chevron-right"></i></button>
+								</div>
+								<div class="controls-row">
+									<button class="btn-direction" id="ctrl-down"><i class="fa fa-chevron-down"></i></button>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="d-flex flex-wrap justify-content-center gap-3 mt-4">
+						<a href="index.html" class="btn btn-glow mr-3 mb-2"><i class="fa fa-home mr-2"></i> Go Home (EN)</a>
+						<a href="translate.html" class="btn btn-outline-glass mb-2"><i class="fa fa-globe mr-2"></i> Ir al Inicio (ES)</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Core scripts -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/custom.js"></script>
+	
+	<!-- Snake Game script -->
+	<script>
+		const canvas = document.getElementById('game-canvas');
+		const ctx = canvas.getContext('2d');
+		const currentScoreEl = document.getElementById('current-score');
+		const overlay = document.getElementById('game-overlay');
+		const overlayTitle = document.getElementById('overlay-title');
+		const overlayDesc = document.getElementById('overlay-desc');
+		const btnStart = document.getElementById('btn-start');
+
+		const gridSize = 15; // 300px / 20 grids = 15px per tile
+		const tileCount = 20; 
+
+		let snake = [];
+		let food = { x: 0, y: 0 };
+		let dx = 0;
+		let dy = -1; // start moving up
+		let score = 0;
+		let gameInterval = null;
+		let isPlaying = false;
+		const targetScore = 10;
+
+		// Initialize drawing state
+		resetGame();
+		draw();
+
+		btnStart.addEventListener('click', () => {
+			if (!isPlaying) {
+				startGame();
+			}
+		});
+
+		// Keyboard controls
+		document.addEventListener('keydown', handleKeyPress);
+
+		// Touch controls with preventDefault to avoid scrolling/zoom on tap
+		const touchUp = document.getElementById('ctrl-up');
+		const touchDown = document.getElementById('ctrl-down');
+		const touchLeft = document.getElementById('ctrl-left');
+		const touchRight = document.getElementById('ctrl-right');
+
+		const addTouchHandler = (elem, x, y) => {
+			elem.addEventListener('click', (e) => {
+				e.preventDefault();
+				changeDirection(x, y);
+			});
+			elem.addEventListener('touchstart', (e) => {
+				e.preventDefault();
+				changeDirection(x, y);
+			});
+		};
+
+		addTouchHandler(touchUp, 0, -1);
+		addTouchHandler(touchDown, 0, 1);
+		addTouchHandler(touchLeft, -1, 0);
+		addTouchHandler(touchRight, 1, 0);
+
+		function handleKeyPress(e) {
+			if (!isPlaying) {
+				if (e.key === ' ' || e.key === 'Enter') {
+					startGame();
+				}
+				return;
+			}
+			
+			// Prevent default scrolling keys
+			if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight',' '].indexOf(e.key) > -1) {
+				e.preventDefault();
+			}
+
+			switch (e.key) {
+				case 'ArrowUp':
+				case 'w':
+				case 'W':
+					changeDirection(0, -1);
+					break;
+				case 'ArrowDown':
+				case 's':
+				case 'S':
+					changeDirection(0, 1);
+					break;
+				case 'ArrowLeft':
+				case 'a':
+				case 'A':
+					changeDirection(-1, 0);
+					break;
+				case 'ArrowRight':
+				case 'd':
+				case 'D':
+					changeDirection(1, 0);
+					break;
+			}
+		}
+
+		function changeDirection(newDx, newDy) {
+			if (!isPlaying) return;
+			// Prevent reversing directly into self
+			if (dx === -newDx && dx !== 0) return;
+			if (dy === -newDy && dy !== 0) return;
+			
+			dx = newDx;
+			dy = newDy;
+		}
+
+		function resetGame() {
+			snake = [
+				{ x: 10, y: 10 },
+				{ x: 10, y: 11 },
+				{ x: 10, y: 12 }
+			];
+			dx = 0;
+			dy = -1;
+			score = 0;
+			currentScoreEl.textContent = score;
+			spawnFood();
+		}
+
+		function startGame() {
+			resetGame();
+			isPlaying = true;
+			overlay.style.display = 'none';
+			
+			if (gameInterval) clearInterval(gameInterval);
+			gameInterval = setInterval(gameLoop, 100);
+		}
+
+		function gameLoop() {
+			// Move snake
+			const head = { x: snake[0].x + dx, y: snake[0].y + dy };
+			
+			// Check wall collision
+			if (head.x < 0 || head.x >= tileCount || head.y < 0 || head.y >= tileCount) {
+				endGame(false);
+				return;
+			}
+
+			// Check self collision
+			for (let i = 0; i < snake.length; i++) {
+				if (snake[i].x === head.x && snake[i].y === head.y) {
+					endGame(false);
+					return;
+				}
+			}
+
+			snake.unshift(head);
+
+			// Check food consumption
+			if (head.x === food.x && head.y === food.y) {
+				score++;
+				currentScoreEl.textContent = score;
+				spawnFood();
+				
+				if (score >= targetScore) {
+					endGame(true);
+					return;
+				}
+			} else {
+				snake.pop();
+			}
+
+			draw();
+		}
+
+		function spawnFood() {
+			food.x = Math.floor(Math.random() * tileCount);
+			food.y = Math.floor(Math.random() * tileCount);
+
+			// Ensure food doesn't spawn on snake body
+			for (let i = 0; i < snake.length; i++) {
+				if (snake[i].x === food.x && snake[i].y === food.y) {
+					spawnFood();
+					break;
+				}
+			}
+		}
+
+		function draw() {
+			// Clear canvas
+			ctx.fillStyle = '#04050a';
+			ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+			// Draw grid lines (subtle)
+			ctx.strokeStyle = 'rgba(255, 255, 255, 0.02)';
+			ctx.lineWidth = 0.5;
+			for (let i = 0; i < tileCount; i++) {
+				ctx.beginPath();
+				ctx.moveTo(i * gridSize, 0);
+				ctx.lineTo(i * gridSize, canvas.height);
+				ctx.stroke();
+
+				ctx.beginPath();
+				ctx.moveTo(0, i * gridSize);
+				ctx.lineTo(canvas.width, i * gridSize);
+				ctx.stroke();
+			}
+
+			// Draw snake
+			snake.forEach((part, index) => {
+				ctx.fillStyle = index === 0 ? '#00d2ff' : 'rgba(0, 210, 255, 0.5)';
+				ctx.strokeStyle = '#04050a';
+				ctx.lineWidth = 1;
+				
+				// Draw rounded rectangle representing the snake
+				ctx.fillRect(part.x * gridSize, part.y * gridSize, gridSize, gridSize);
+				ctx.strokeRect(part.x * gridSize, part.y * gridSize, gridSize, gridSize);
+			});
+
+			// Draw food (glowing pink block)
+			ctx.fillStyle = '#ec4899';
+			ctx.shadowColor = '#ec4899';
+			ctx.shadowBlur = 8;
+			ctx.fillRect(food.x * gridSize + 2, food.y * gridSize + 2, gridSize - 4, gridSize - 4);
+			
+			// Reset shadow blur
+			ctx.shadowBlur = 0;
+		}
+
+		function endGame(isWin) {
+			isPlaying = false;
+			clearInterval(gameInterval);
+			
+			overlay.style.display = 'flex';
+			if (isWin) {
+				overlayTitle.textContent = "LINK STABILIZED";
+				overlayTitle.className = "text-success font-weight-bold mb-2";
+				overlayDesc.textContent = "Hacking successful. Connection to the main sector has been fully established!";
+				btnStart.textContent = "PLAY AGAIN";
+			} else {
+				overlayTitle.textContent = "CONNECTION LOST";
+				overlayTitle.className = "text-danger font-weight-bold mb-2";
+				overlayDesc.textContent = "Recovery failed. Reconstruct the link node sequence to establish data paths.";
+				btnStart.textContent = "REINITIALIZE RECOVERY";
+			}
+		}
+	</script>
+</body>
+</html>
