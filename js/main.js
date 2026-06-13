@@ -290,6 +290,7 @@
 
 
 
+/*
 $(function() {
 
   $(".progress").each(function() {
@@ -316,4 +317,5 @@ $(function() {
   }
 
 });
+*/
 

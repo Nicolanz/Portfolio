@@ -15,6 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 4. Interactive Terminal Console
     initTerminal(isSpanish);
+
+    // 5. Scroll Skills Animator
+    initSkillsAnimation();
 });
 
 /* ========================================================================= */
@@ -473,5 +476,76 @@ GitHub   : <a href="https://github.com/Nicolanz" target="_blank" class="text-cya
             }
         };
         document.addEventListener('keydown', escHandler);
+    }
+}
+
+/* ========================================================================= */
+/* Scroll Skills Animator */
+/* ========================================================================= */
+function initSkillsAnimation() {
+    const skillsSection = document.getElementById('skills-section');
+    if (!skillsSection) return;
+
+    const progressElements = document.querySelectorAll('#skills-section .progress');
+    if (progressElements.length === 0) return;
+
+    // Set initial text content to 0% and record value
+    progressElements.forEach(el => {
+        const textValEl = el.querySelector('.h2.font-weight-bold');
+        if (textValEl) {
+            textValEl.innerHTML = `0<span class="small">%</span>`;
+        }
+    });
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateProgressCircles();
+                observer.unobserve(entry.target); // Trigger once
+            }
+        });
+    }, {
+        threshold: 0.15
+    });
+
+    observer.observe(skillsSection);
+
+    function animateProgressCircles() {
+        progressElements.forEach(el => {
+            const value = parseInt(el.getAttribute('data-value'), 10) || 0;
+            const leftBar = el.querySelector('.progress-left .progress-bar');
+            const rightBar = el.querySelector('.progress-right .progress-bar');
+            const textValEl = el.querySelector('.h2.font-weight-bold');
+
+            // 1. Rotate circle segments
+            if (value > 0) {
+                setTimeout(() => {
+                    if (value <= 50) {
+                        const deg = (value / 100) * 360;
+                        if (rightBar) rightBar.style.transform = `rotate(${deg}deg)`;
+                    } else {
+                        const degLeft = ((value - 50) / 100) * 360;
+                        if (rightBar) rightBar.style.transform = `rotate(180deg)`;
+                        if (leftBar) leftBar.style.transform = `rotate(${degLeft}deg)`;
+                    }
+                }, 100);
+            }
+
+            // 2. Count up percentage text
+            if (textValEl) {
+                let currentNum = 0;
+                const duration = 1500; // 1.5s animation duration
+                const stepTime = Math.max(Math.floor(duration / value), 12);
+                
+                const counterInterval = setInterval(() => {
+                    currentNum++;
+                    textValEl.innerHTML = `${currentNum}<span class="small">%</span>`;
+                    
+                    if (currentNum >= value) {
+                        clearInterval(counterInterval);
+                    }
+                }, stepTime);
+            }
+        });
     }
 }
