@@ -236,7 +236,7 @@ Passionate about self-learning, optimization, and shell scripting.`,
             contact: `Get in Touch:
 --------------------------------------------------
 Email    : <a href="mailto:nicolasandreszarate@gmail.com" class="text-cyan">nicolasandreszarate@gmail.com</a>
-Phone    : +57 (319) 267 1867
+Phone    : +57 (319) 267 1867 / +57 (317) 143 5304
 LinkedIn : <a href="https://www.linkedin.com/in/nicolas-zarate/" target="_blank" class="text-cyan">linkedin.com/in/nicolas-zarate</a>
 GitHub   : <a href="https://github.com/Nicolanz" target="_blank" class="text-cyan">github.com/Nicolanz</a>
 
@@ -292,7 +292,7 @@ Apasionado por la optimización, el autoaprendizaje y scripting Unix.`,
             contact: `Datos de Contacto:
 --------------------------------------------------
 Correo   : <a href="mailto:nicolasandreszarate@gmail.com" class="text-cyan">nicolasandreszarate@gmail.com</a>
-Teléfono : +57 (319) 267 1867
+Teléfono : +57 (319) 267 1867 / +57 (317) 143 5304
 LinkedIn : <a href="https://www.linkedin.com/in/nicolas-zarate/" target="_blank" class="text-cyan">linkedin.com/in/nicolas-zarate</a>
 GitHub   : <a href="https://github.com/Nicolanz" target="_blank" class="text-cyan">github.com/Nicolanz</a>
 

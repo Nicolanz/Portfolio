@@ -1154,3 +1154,13 @@ h1, h2, h3, h4, h5, h6,
 #ftco-loader .path {
     stroke: var(--primary-cyan) !important;
 }
+
+/* Responsive Hobbies/Interests Styles (< 768px) */
+@media (max-width: 767.98px) {
+    .my-interest .interest-wrap {
+        width: 100% !important;
+        float: none !important;
+        margin-right: 0 !important;
+        margin-bottom: 12px !important;
+    }
+}
