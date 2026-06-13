@@ -66,22 +66,25 @@ $(function() {
 
         setFormLoadingState(true);
 
-        // 3. Prepare parameters for EmailJS (robust parameter names)
+        // 3. Prepare parameters for the server
         const templateParams = {
             name: name,
-            from_name: name,
             email: email,
-            from_email: email,
-            reply_to: email,
             subject: subject,
             message: message,
             'g-recaptcha-response': recaptchaResponse
         };
 
-        // 4. Send Email via EmailJS
-        emailjs.send('service_9n4249o', 'template_r5xicbi', templateParams)
-            .then(function(response) {
-                console.log('SUCCESS!', response.status, response.text);
+        // 4. Send Email via local PHP handler
+        $.ajax({
+            type: 'POST',
+            url: 'contact.php',
+            data: templateParams,
+            dataType: 'json'
+        })
+        .done(function(response) {
+            if (response.success) {
+                console.log('SUCCESS!', response);
                 
                 // Show beautiful success alert
                 const successMsg = isSpanish 
@@ -97,18 +100,23 @@ $(function() {
                 }
                 setFormLoadingState(false);
                 if (submitBtn) submitBtn.setAttribute('disabled', 'true');
-            })
-            .catch(function(error) {
-                console.error('FAILED...', error);
-                
-                // Show error message
-                const errorMsg = isSpanish 
-                    ? 'Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo o escríbeme directamente a mi correo.'
-                    : 'Failed to send the message. Please try again or email me directly at my address.';
-                
-                showStatusAlert('danger', errorMsg);
+            } else {
+                console.error('FAILED...', response.message);
+                showStatusAlert('danger', response.message);
                 setFormLoadingState(false);
-            });
+            }
+        })
+        .fail(function(xhr, status, error) {
+            console.error('FAILED...', error);
+            
+            // Show error message
+            const errorMsg = isSpanish 
+                ? 'Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo o escríbeme directamente a mi correo.'
+                : 'Failed to send the message. Please try again or email me directly at my address.';
+            
+            showStatusAlert('danger', errorMsg);
+            setFormLoadingState(false);
+        });
     });
 
     // Helper: shows loading spinner on button and disables fields
