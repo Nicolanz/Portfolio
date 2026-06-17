@@ -1235,3 +1235,33 @@ h1, h2, h3, h4, h5, h6,
         color: var(--primary-cyan) !important;
     }
 }
+
+/* Navbar brand logo toggle on scroll with premium transition */
+@keyframes logoFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.85);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.ftco_navbar .brand-logo {
+    display: none;
+    height: 38px;
+    width: auto;
+}
+
+.ftco_navbar.scrolled .brand-text {
+    display: none;
+}
+
+.ftco_navbar.scrolled .brand-logo {
+    display: inline-block;
+    animation: logoFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    margin-left: -20px; /* Alinea el logo con el borde izquierdo original */
+    margin-right: -12px; /* Acerca el punto cyan al logo */
+    margin-bottom: 10px; /* Desplaza el logo ligeramente hacia abajo */
+}
