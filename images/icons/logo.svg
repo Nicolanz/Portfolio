@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <defs>
+    <linearGradient id="techGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06B6D4" /> <!-- Cian -->
+      <stop offset="100%" stop-color="#4F46E5" /> <!-- Índigo -->
+    </linearGradient>
+  </defs>
+  
+  <!-- Fondo oscuro con bordes redondeados -->
+  <rect x="0" y="0" width="100" height="100" rx="20" fill="#171717" />
+  
+  <!-- Letra N -->
+  <path d="M 25 75 L 25 25 L 55 75 L 55 25" 
+        fill="none" 
+        stroke="url(#techGradient)" 
+        stroke-width="12" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" />
+        
+  <!-- Letra Z superpuesta/conectada -->
+  <path d="M 45 25 L 75 25 L 45 75 L 75 75" 
+        fill="none" 
+        stroke="url(#techGradient)" 
+        stroke-width="12" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" />
+        
+  <!-- Nodo de datos (Punto de acento) -->
+  <circle cx="75" cy="25" r="8" fill="#06B6D4" />
+</svg>
