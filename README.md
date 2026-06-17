@@ -20,13 +20,13 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white" alt="HTML5" />
-  <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white" alt="CSS3" />
-  <img src="https://img.shields.io/badge/JavaScript_ES6-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JS" />
-  <img src="https://img.shields.io/badge/Bootstrap-7952B3?style=flat-square&logo=bootstrap&logoColor=white" alt="Bootstrap" />
-  <img src="https://img.shields.io/badge/AWS-232F3E?style=flat-square&logo=amazon-aws&logoColor=white" alt="AWS" />
-  <img src="https://img.shields.io/badge/PHP_Handler-777BB4?style=flat-square&logo=php&logoColor=white" alt="PHP" />
-  <img src="https://img.shields.io/badge/reCAPTCHA_v2-4285F4?style=flat-square&logo=google&logoColor=white" alt="reCAPTCHA" />
+  <a href="#"><img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white" alt="HTML5" /></a>
+  <a href="#"><img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white" alt="CSS3" /></a>
+  <a href="#"><img src="https://img.shields.io/badge/JavaScript_ES6-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JS" /></a>
+  <a href="#"><img src="https://img.shields.io/badge/Bootstrap-7952B3?style=flat-square&logo=bootstrap&logoColor=white" alt="Bootstrap" /></a>
+  <a href="#"><img src="https://img.shields.io/badge/AWS-232F3E?style=flat-square&logo=amazon-aws&logoColor=white" alt="AWS" /></a>
+  <a href="#"><img src="https://img.shields.io/badge/PHP_Handler-777BB4?style=flat-square&logo=php&logoColor=white" alt="PHP" /></a>
+  <a href="#"><img src="https://img.shields.io/badge/reCAPTCHA_v2-4285F4?style=flat-square&logo=google&logoColor=white" alt="reCAPTCHA" /></a>
 </p>
 
 ---
