@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-  <a href="https://nicolaszarate.com/" target="_blank">
+  <a href="https://www.nicolaszarate.com/" target="_blank">
     <img src="https://img.shields.io/badge/Live_Demo-%E2%9A%A1-00d2ff?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Live Demo" />
   </a>
   <a href="https://github.com/Nicolanz/Portfolio" target="_blank">
