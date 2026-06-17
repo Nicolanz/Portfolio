@@ -517,6 +517,9 @@ h1, h2, h3, h4, h5, h6,
     border-radius: 14px;
     padding: 15px 18px 15px 50px;
     font-size: 15px;
+    line-height: normal;
+    -webkit-appearance: none;
+    appearance: none;
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     backdrop-filter: blur(5px);
 }
@@ -1053,9 +1056,6 @@ h1, h2, h3, h4, h5, h6,
     .contact-form {
         padding: 24px 16px !important; /* Give more horizontal space on mobile */
     }
-}
-
-@media (max-width: 480px) {
     .g-recaptcha-wrapper {
         padding: 8px 4px !important;
         display: inline-flex !important;
@@ -1264,4 +1264,20 @@ h1, h2, h3, h4, h5, h6,
     margin-left: -20px; /* Alinea el logo con el borde izquierdo original */
     margin-right: -12px; /* Acerca el punto cyan al logo */
     margin-bottom: 10px; /* Desplaza el logo ligeramente hacia abajo */
+}
+
+/* Prevent iOS auto-zoom on form inputs and terminal input focus, and fix iOS Safari caret positioning */
+@media screen and (max-width: 767px) {
+    .form-control-custom,
+    #terminal-input,
+    input[type="text"],
+    input[type="email"],
+    textarea {
+        font-size: 16px !important;
+    }
+
+    .form-control-custom {
+        padding-left: 18px !important;
+        text-indent: 32px !important;
+    }
 }
