@@ -28,8 +28,8 @@ function initTypewriter(isSpanish) {
     if (!textElement) return;
 
     const words = isSpanish 
-        ? ["Desarrollador Web", "Ingeniero UX/UI", "Creador de Sistemas", "Desarrollador Full-Stack"]
-        : ["Web Developer", "UX/UI Engineer", "System Creator", "Full-Stack Developer"];
+        ? ["Desarrollador Web", "Ingeniero de IA", "Creador de Sistemas", "Desarrollador Full-Stack", "Especialista en UI/UX"]
+        : ["Web Developer", "AI Engineer", "System Creator", "Full-Stack Developer", "UI/UX Specialist"]
     
     let wordIndex = 0;
     let charIndex = 0;
