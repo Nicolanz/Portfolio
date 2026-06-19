@@ -87,9 +87,24 @@ function initParticles() {
         radius: 120
     };
 
+    let lastWidth = window.innerWidth;
+
     window.addEventListener('resize', () => {
-        width = canvas.parentElement.offsetWidth;
-        height = canvas.parentElement.offsetHeight;
+        const newWidth = canvas.parentElement.offsetWidth;
+        const newHeight = canvas.parentElement.offsetHeight;
+        
+        // If only height changed (like mobile scroll showing/hiding address bar),
+        // we update the boundaries for particle physics, but DO NOT reset canvas width/height
+        // to avoid clearing the canvas, causing layout flickers or memory crashes.
+        if (window.innerWidth === lastWidth) {
+            width = newWidth;
+            height = newHeight;
+            return;
+        }
+        
+        lastWidth = window.innerWidth;
+        width = newWidth;
+        height = newHeight;
         canvas.width = width;
         canvas.height = height;
     });

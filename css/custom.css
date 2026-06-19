@@ -138,6 +138,7 @@ h1, h2, h3, h4, h5, h6,
 /* Hero Section */
 .hero {
     min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     align-items: center;
     position: relative;
@@ -874,6 +875,7 @@ h1, h2, h3, h4, h5, h6,
 /* 404 Page Custom Styles */
 .error-page-wrapper {
     min-height: 100vh !important;
+    min-height: 100dvh !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
@@ -1247,18 +1249,18 @@ h1, h2, h3, h4, h5, h6,
     }
 }
 
-.ftco_navbar .brand-logo {
-    display: none;
-    height: 38px;
-    width: auto;
+.brand-logo {
+    display: none !important;
+    height: 38px !important;
+    width: auto !important;
 }
 
 .ftco_navbar.scrolled .brand-text {
-    display: none;
+    display: none !important;
 }
 
 .ftco_navbar.scrolled .brand-logo {
-    display: inline-block;
+    display: inline-block !important;
     animation: logoFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     margin-left: -20px; /* Alinea el logo con el borde izquierdo original */
     margin-right: -12px; /* Acerca el punto cyan al logo */
