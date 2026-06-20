@@ -1,3 +1,8 @@
+# Redirect non-WWW to WWW with HTTPS
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^nicolaszarate\.com$ [NC]
+RewriteRule ^(.*)$ https://www.nicolaszarate.com/$1 [R=301,L]
+
 # cPanel Apache Error Redirects
 # Redirects all unresolved routes and missing files to our interactive 404 page
 ErrorDocument 404 /404.html
